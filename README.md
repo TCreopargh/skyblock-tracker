@@ -1,5 +1,7 @@
 # skyblock-tracker
 
+[简体中文](https://github.com/TCreopargh/skyblock-tracker/edit/master/README-CN.md)
+
 ## Install instructions
 
  * Requires forge
