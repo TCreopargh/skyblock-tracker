@@ -4,7 +4,7 @@
 
  * 安装好forge
  
- * 在此处下载Chattriggers5.2版本： https://github.com/ChatTriggers/ChatTriggers/releases
+ * 在此处下载Chattriggers5.2版本： <https://github.com/ChatTriggers/ChatTriggers/releases>
     - 此版本为老版本，新版本语法完全不同且搭配liteloader或雷神加速器都会闪退，因此没有使用。
  
  * 把jar拖到mod文件夹，再把ChatTriggers文件夹拖到mod文件夹即可
