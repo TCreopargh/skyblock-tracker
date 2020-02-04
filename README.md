@@ -1,6 +1,6 @@
 # skyblock-tracker
 
-[简体中文](https://github.com/TCreopargh/skyblock-tracker/master/README-CN.md)
+[简体中文](https://github.com/TCreopargh/skyblock-tracker/blob/master/README-CN.md)
 
 ## Install instructions
 
