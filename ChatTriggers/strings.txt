@@ -1,0 +1,98 @@
+string:grizzly
+  value:0
+string:carrotking
+  value:0
+string:wolfbasexp
+  value:0
+string:grinch
+  value:0
+string:digested
+  value:0
+string:catfish
+  value:0
+string:foul
+  value:0
+string:mengdong
+  value:0
+string:hydra
+  value:0
+string:seawitch
+  value:0
+string:swatter
+  value:0
+string:toxic
+  value:0
+string:sealeech
+  value:0
+string:pest
+  value:0
+string:hamster
+  value:0
+string:nightsquid
+  value:0
+string:overflux
+  value:0
+string:seawalker
+  value:0
+string:undeadcata
+  value:0
+string:crit6
+  value:0
+string:spidercata
+  value:0
+string:emperor
+  value:0
+string:yeti
+  value:0
+string:squid
+  value:0
+string:talisman
+  value:0
+string:frosty
+  value:0
+string:beheaded
+  value:0
+string:scythe
+  value:0
+string:snake
+  value:0
+string:test1
+  value:0
+string:bane6
+  value:0
+string:bite
+  value:0
+string:zombie
+  value:0
+string:smite6
+  value:0
+string:steve
+  value:0
+string:goodcatch
+  value:0
+string:guardian
+  value:0
+string:seaarcher
+  value:0
+string:greatcatch
+  value:0
+string:revcata
+  value:0
+string:wolf
+  value:0
+string:couture
+  value:0
+string:spirit
+  value:0
+string:zombiebasexp
+  value:0
+string:deeprider
+  value:0
+string:spiderbasexp
+  value:0
+string:spider
+  value:0
+string:redclaw
+  value:0
+string:defender
+  value:0
