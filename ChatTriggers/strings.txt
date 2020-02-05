@@ -5,7 +5,7 @@ string:carrotking
 string:wolfbasexp
   value:0
 string:fakedrop
-  value:0
+  value:1
 string:grinch
   value:0
 string:digested
@@ -19,7 +19,7 @@ string:mengdong
 string:hydra
   value:0
 string:cooldown
-  value:0
+  value:1
 string:seawitch
   value:0
 string:swatter
@@ -39,11 +39,11 @@ string:overflux
 string:seawalker
   value:0
 string:easteregg
-  value:0
+  value:1
 string:undeadcata
   value:0
 string:nonchat
-  value:0
+  value:1
 string:crit6
   value:0
 string:spidercata
@@ -103,12 +103,12 @@ string:spiderbasexp
 string:spider
   value:0
 string:splash
-  value:0
+  value:1
 string:da
-  value:0
+  value:1
 string:redclaw
   value:0
 string:defender
   value:0
 string:outbid
-  value:0
+  value:1
