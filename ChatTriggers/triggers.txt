@@ -3,7 +3,7 @@
 trigger chat(/d) {
   cancel
   chat &e▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-  chat &6&l Slayer & Fishing Tracker  &r&7v1.1
+  chat &6&l Skyblock Tracker  &r&7v1.2
   chat &7  Powered By TCreopargh
   chat
   chat &b  Select an item:
@@ -16,11 +16,10 @@ trigger chat(/d) {
   chat
   chat clickable(&d&l    Fishing Tracker,run_command,/tr fishing,&dClick to view your fishing stats!)
   chat
-  chat clickable(&6    Help,run_command,/tr help,&6Click to view help!)
+  chat clickable(&6    Help,run_command,/tr help,&6Click to view help!)    clickable(&6Options,run_command,/tr options,&6Click to check options!)
   chat &e▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 }
 trigger other(wolf) {
-  trigger function wolfloot {
   {string[wolfxp]}.set({string[wolf]}.*(0.5))
   {string[wolfxp]}.set({string[wolfxp]}.+({string[wolfbasexp]}))
   if {string[wolfxp]}.>=(1000)
@@ -31,7 +30,7 @@ trigger other(wolf) {
   end
   chat &b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
   chat &3&l Sven Loot Summary:
-  chat &e   Wolf Slayer XP: &3{string[wolfxp]}
+  chat &e   Wolf Slayer XP: &d{string[wolfxp]}
   chat &c   T4 Sven Killed: &b{string[wolf]}
   chat &5   Overflux Capacitor: &c{string[overflux]}
   chat &9   Grizzly Bait: &c{string[grizzly]}
@@ -80,7 +79,6 @@ trigger other(wolf) {
   chat &b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 }
 trigger other(spider) {
-  trigger function spiderloot {
   {string[spiderxp]}.set({string[spider]}.*(0.5))
   {string[spiderxp]}.set({string[spiderxp]}.+({string[spiderbasexp]}))
   if {string[spiderxp]}.>=(1000)
@@ -91,7 +89,7 @@ trigger other(spider) {
   end
   chat &c▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
   chat &4&l Tarantula Loot Summary:
-  chat &e   Spider Slayer XP: &3{string[spiderxp]}
+  chat &e   Spider Slayer XP: &d{string[spiderxp]}
   chat &c   T4 Tarantula Killed: &b{string[spider]}
   chat &6   Digested Mosquito: &c{string[digested]}
   chat &5   Tarantula Talisman: &6{string[talisman]}
@@ -140,7 +138,6 @@ trigger other(spider) {
   chat &c▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 }
 trigger other(zombie) {
-  trigger function zombieloot {
   {string[zombiexp]}.set({string[zombie]}.*(0.5))
   {string[zombiexp]}.set({string[zombiexp]}.+({string[zombiebasexp]}))
   if {string[zombiexp]}.>=(1000)
@@ -151,7 +148,7 @@ trigger other(zombie) {
   end
   chat &a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
   chat &2&l Revenant Loot Summary:
-  chat &e   Zombie Slayer XP: &3{string[zombiexp]}
+  chat &e   Zombie Slayer XP: &d{string[zombiexp]}
   chat &c   T4 Revenant Killed: &b{string[zombie]}
   chat &6   Scythe Blade: &c{string[scythe]}
   chat &5   Beheaded Horror: &6{string[beheaded]}
@@ -241,7 +238,7 @@ trigger other(fishing2) {
 }
 trigger other(help) {
   chat &e▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-  chat &6&l Slayer & Fishing Tracker
+  chat &6&l Skyblock Tracker    &b&lHelp
   chat &7  Powered By TCreopargh
   chat
   chat  &6•&r This script is designed to help players track their slayer and fishing stats.
@@ -253,25 +250,190 @@ trigger other(help) {
   chat  &6•&r You may edit this script for personal use.
   chat &e▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 }
+trigger other(options) {
+  if not {string[splash]}.==(0)
+    {string[splash1]}.set(&a&lON)
+  else
+    {string[splash1]}.set(&c&lOFF)
+  end
+  if not {string[da]}.==(0)
+    {string[da1]}.set(&a&lON)
+  else
+    {string[da1]}.set(&c&lOFF)
+  end
+  if not {string[outbid]}.==(0)
+    {string[outbid1]}.set(&a&lON)
+  else
+    {string[outbid1]}.set(&c&lOFF)
+  end
+  if not {string[fakedrop]}.==(0)
+    {string[fakedrop1]}.set(&a&lON)
+  else
+    {string[fakedrop1]}.set(&c&lOFF)
+  end
+  if not {string[nonchat]}.==(0)
+    {string[nonchat1]}.set(&a&lON)
+  else
+    {string[nonchat1]}.set(&c&lOFF)
+  end
+  if not {string[cooldown]}.==(0)
+    {string[cooldown1]}.set(&a&lON)
+  else
+    {string[cooldown1]}.set(&c&lOFF)
+  end
+  if not {string[easteregg]}.==(0)
+    {string[easteregg1]}.set(&a&lON)
+  else
+    {string[easteregg1]}.set(&c&lOFF)
+  end
+  chat &e▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+  chat &6&l Skyblock Tracker    &c&lOptions Menu
+  chat &7  Powered By TCreopargh
+  chat &b  Click on an option to toggle it.
+  chat
+  chat &e  clickable(&fSplash notifications {string[splash1]},run_command,/tr togglesplash,&eClick to toggle splash notifications!)
+  chat &e  clickable(&6Dark Auction notifications {string[da1]},run_command,/tr toggleda,&eClick to toggle Dark Auction notifications!)
+  chat &e  clickable(&fOutbid notifications {string[outbid1]},run_command,/tr toggleoutbid,&eClick to toggle outbid notifications!)
+  chat &e  clickable(&6Fake slayer drop messages {string[fakedrop1]},run_command,/tr togglefakedrop,&eClick to toggle fake slayer drop messages!)
+  chat &e  clickable(&fMore visible non messages {string[nonchat1]},run_command,/tr togglenonchat,&eClick to toggle more visible non messages!)
+  chat &e  clickable(&6Ability cooldown notifications {string[cooldown1]},run_command,/tr togglecooldown,&eClick to toggle ability cooldown notifications!)
+  chat &e  clickable(&fEaster Egg {string[easteregg1]},run_command,/tr toggleeasteregg,&eClick to toggle Easter egg!)
+  chat &e▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+}
+trigger other(togglesplash) {
+  if {string[splash]}.==(0)
+    {string[splash]}.save(1)
+    chat &b&lSplash notifications &r&efeature is set to &a&lON!
+  else
+    {string[splash]}.save(0)
+    chat &b&lSplash notifications &r&efeature is set to &c&lOFF!
+  end
+}
+trigger other(toggleda) {
+  if {string[da]}.==(0)
+    {string[da]}.save(1)
+    chat &b&lDark Auction notifications &r&efeature is set to &a&lON!
+  else
+    {string[da]}.save(0)
+    chat &b&lDark Auction notifications &r&efeature is set to &c&lOFF!
+  end
+}
+trigger other(toggleoutbid) {
+  if {string[outbid]}.==(0)
+    {string[outbid]}.save(1)
+    chat &b&lOutbid notifications &r&efeature is set to &a&lON!
+  else
+    {string[outbid]}.save(0)
+    chat &b&lOutbid notifications &r&efeature is set to &c&lOFF!
+  end
+}
+trigger other(togglefakedrop) {
+  if {string[fakedrop]}.==(0)
+    {string[fakedrop]}.save(1)
+    chat &b&lFake slayer drop messages &r&efeature is set to &a&lON!
+  else
+    {string[fakedrop]}.save(0)
+    chat &b&lFake slayer drop messages &r&efeature is set to &c&lOFF!
+  end
+}
+trigger other(togglenonchat) {
+  if {string[nonchat]}.==(0)
+    {string[nonchat]}.save(1)
+    chat &b&lMore visible non messages &r&efeature is set to &a&lON!
+  else
+    {string[nonchat]}.save(0)
+    chat &b&lMore visible non messages &r&efeature is set to &c&lOFF!
+  end
+}
+trigger other(togglecooldown) {
+  if {string[cooldown]}.==(0)
+    {string[cooldown]}.save(1)
+    chat &b&lAbility cooldown notifications &r&efeature is set to &a&lON!
+  else
+    {string[cooldown]}.save(0)
+    chat &b&lAbility cooldown notifications &r&efeature is set to &c&lOFF!
+  end
+}
+trigger other(toggleeasteregg) {
+  if {string[easteregg]}.==(0)
+    {string[easteregg]}.save(1)
+    chat &b&lEaster Egg &r&efeature is set to &a&lON!
+  else
+    {string[easteregg]}.save(0)
+    chat &b&lEaster Egg &r&efeature is set to &c&lOFF!
+  end
+}
+trigger onchat(20) {
+  if not {string[fakedrop]}.==(0)
+    if not {msg}.remForm().contains(:)
+      if {string[s]}.remForm().containsIgnoreCase(Sven)
+        if {string[s]}.remForm().contains(IV)
+          if {msg}.remForm().replaceIgnoreCase(狼,Wolf).containsIgnoreCase(Talk to Maddox to claim your Wolf Slayer XP!)
+            wait 20
+              chat §d§lCRAZY §d§lRARE §d§lDROP!  §k§7(§5Overflux §5Capacitor§7) §b(+85% §bMagic §bFind!)
+              sound <pitch=2>random.levelup
+            end
+          end
+        end
+      end
+    end
+  end
+}
+trigger onchat(21) {
+  if not {string[fakedrop]}.==(0)
+    if not {msg}.remForm().contains(:)
+      if {string[s]}.remForm().containsIgnoreCase(Reve)
+        if {string[s]}.remForm().contains(IV)
+          if {msg}.remForm().replaceIgnoreCase(僵尸,Zombie).containsIgnoreCase(Talk to Maddox to claim your Zombie Slayer XP!)
+            wait 20
+              chat §d§lCRAZY §d§lRARE §d§lDROP!  §k§7(§6Scythe §6Blade§7) §b(+89% §bMagic §bFind!)
+              sound <pitch=2>random.levelup
+            end
+          end
+        end
+      end
+    end
+  end
+}
+trigger onchat(22) {
+  if not {string[fakedrop]}.==(0)
+    if not {msg}.remForm().contains(:)
+      if {string[s]}.remForm().containsIgnoreCase(Taran)
+        if {string[s]}.remForm().contains(IV)
+          if {msg}.remForm().replaceIgnoreCase(蜘蛛,Spider).containsIgnoreCase(Talk to Maddox to claim your Spider Slayer XP!)
+            wait 20
+              chat §d§lCRAZY §d§lRARE §d§lDROP!  §k§7(§6Digested §6Mosquito§7) §b(+85% §bMagic §bFind!)
+              sound <pitch=2>random.levelup
+            end
+          end
+        end
+      end
+    end
+  end
+}
 trigger chat(Used Howl! ({string[amount]} Mana)) {
-  wait 800
-    chat &bYour &a&lHowl&b is ready!
-    chat &aRight-click&b your &9Weird Tuba&b to activate the ability! &7(150 Mana)
+  if not {string[cooldown]}.==(0)
+    wait 800
+      chat &bYour &a&lHowl&b is ready!
+      chat &aRight-click&b your &9Weird Tuba&b to activate the ability! &7(150 Mana)
+    end
   end
 }
 trigger onchat(10) {
-  if {msg}.remForm().replaceIgnoreCase(hub,splash).replaceIgnoreCase(sploosh,splash).replaceIgnoreCase(spritz,splash).replaceIgnoreCase(splashed,splash).replaceIgnoreCase(splashing,splash).suffix( ).containsIgnoreCase( splash )
-    if not {msg}.toLower().contains(hub29splash)
-      if not {msg}.toLower().contains(to the hub island)
-        if not {msg}.toLower().contains(join for hub)
-          if not {msg}.toLower().contains(skyblock hub)
-            if not {msg}.toLower().contains(hub29splash)
-              if not {msg}.toLower().contains(splashed by)
-                cancel
-                chat {msg}.replace(splash,&c&osplash&r).replace(hub,&c&ohub&r).replace(Splash,&c&oSplash&r).replace(SPLASH,&c&oSPLASH&r).replace(Hub,&c&oHub&r).replace(HUB,&c&oHUB&r)
-                wait 5
-                  chat &c&lATTENTION: &eThere &emight &ebe &ea &dsplash&e!
-                  sound mob.enderdragon.growl
+  if not {string[splash]}.==(0)
+    if {msg}.remForm().replaceIgnoreCase(hub,splash).replace(?, ).replace(!, ).replace(-, ).replaceIgnoreCase(sploosh,splash).replaceIgnoreCase(spritz,splash).replaceIgnoreCase(splashed,splash).replaceIgnoreCase(splashing,splash).suffix( ).containsIgnoreCase( splash )
+      if not {msg}.toLower().contains(hub29splash)
+        if not {msg}.toLower().contains(to the hub island)
+          if not {msg}.toLower().contains(join for hub)
+            if not {msg}.toLower().contains(skyblock hub)
+              if not {msg}.toLower().contains(hub29splash)
+                if not {msg}.toLower().contains(splashed by)
+                  cancel
+                  chat {msg}.replace(splash,&c&osplash&r).replace(hub,&c&ohub&r).replace(Splash,&c&oSplash&r).replace(SPLASH,&c&oSPLASH&r).replace(Hub,&c&oHub&r).replace(HUB,&c&oHUB&r)
+                  wait 5
+                    chat &c&lATTENTION: &eThere &emight &ebe &ea &dsplash&e!
+                    sound <pitch=2>mob.enderdragon.growl
+                  end
                 end
               end
             end
@@ -281,34 +443,42 @@ trigger onchat(10) {
     end
 }
 trigger onchat(11) {
-  if {msg}.toLower().contains(outbid you by)
-    wait 10
-      chat &c&lATTENTION: &eSomeone &ehas &eoutbid &eyou!
-      sound mob.enderdragon.growl
+  if not {string[outbid]}.==(0)
+    if {msg}.toLower().contains(outbid you by)
+      wait 10
+        chat &c&lATTENTION: &eSomeone &ehas &eoutbid &eyou!
+        sound <pitch=2>mob.enderdragon.growl
+      end
     end
   end
 }
 trigger onchat(12) {
-  if {msg}.contains(TCreopargh)
-    if not {msg}.toLower().contains(splash)
-      if not {msg}.toLower().contains(hub)
-        cancel
-        chat {msg}.replace(&6[MVP&r&2++&r&6] TCreopargh,&c[OWNER] &cTCreopargh&r).replace(&6[MVP&2++&6] TCreopargh,&c[OWNER] &cTCreopargh&r)
+  if not {string[easteregg]}.==(0)
+    if {msg}.contains(TCreopargh)
+      if not {msg}.toLower().contains(splash)
+        if not {msg}.toLower().contains(hub)
+          cancel
+          chat {msg}.replace(&6[MVP&r&2++&r&6] TCreopargh,&c[OWNER] &cTCreopargh&r).replace(&6[MVP&2++&6] TCreopargh,&c[OWNER] &cTCreopargh&r)
+        end
       end
     end
   end
 }
 trigger chat({string[name]}: {string[msg]}) {
-  if {string[name]}.matchesRegex([a-zA-Z0-9_]+)
-    cancel
-    chat &7[NON] &7{string[name]}&f: &f{string[msg]}
+  if not {string[nonchat]}.==(0)
+    if {string[name]}.matchesRegex([a-zA-Z0-9_]+)
+      cancel
+      chat &7[NON] &7{string[name]}&f: &f{string[msg]}
+    end
   end
 }
 trigger onchat(14) {
-  if {msg}.contains(SLAYER QUEST COMPLETE!)
-    wait 2400
-      chat &bYour &5Maddox &5Batphone&b is ready!
-      chat &aRight-click&b your &5Maddox &5Batphone&b to call Maddox!
+  if not {string[cooldown]}.==(0)
+    if {msg}.contains(SLAYER QUEST COMPLETE!)
+      wait 2400
+        chat &bYour &5Maddox &5Batphone&b is ready!
+        chat &aRight-click&b your &5Maddox &5Batphone&b to call Maddox!
+      end
     end
 }
 trigger onchat(0) {
@@ -482,5 +652,25 @@ trigger onchat(3) {
       {string[carrotking]}.save({string[carrotking]}.+(1))
     end
   end
+}
+trigger onClientTick(2) {
+  {string[daminute]}.set(55)
+  if not {string[da]}.==(0)
+    if {minute}.-({string[daminute]}).*(-1).<=(3)
+      if {minute}.-({string[daminute]}).*(-1).>(0)
+        if {second}.==(0)
+          if {unixTime}.>=({string[lastdanotify]}.+(1000))
+            {string[lastdanotify]}.set({unixTime})
+            if {minute}.-({string[daminute]}).*(-1).==(1)
+              chat  &5⚖ &dThe &5&lDark Auction &dis in &c{minute}.-({string[daminute]}).*(-1) &dminute&d!
+              sound mob.enderdragon.growl
+              title <subtitle=&aGet Ready! Don't forget to withdraw money!><time=40>&5&lDark Auction &ein &c{minute}.-({string[daminute]}).*(-1) &eminute!
+            else
+              chat  &5⚖ &dThe &5&lDark Auction &dis in &c{minute}.-({string[daminute]}).*(-1) &dminutes!
+              sound <pitch=2>mob.enderdragon.growl
+            end
+          end
+        end
+      end
 }
 
