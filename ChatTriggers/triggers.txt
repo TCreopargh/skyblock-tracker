@@ -3,7 +3,7 @@
 trigger chat(/d) {
   cancel
   chat &e▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-  chat &6&l Skyblock Tracker  &r&7v1.2
+  chat &6&l Skyblock Tracker  &r&7v1.2.1
   chat &7  Powered By TCreopargh
   chat
   chat &b  Select an item:
@@ -16,7 +16,7 @@ trigger chat(/d) {
   chat
   chat clickable(&d&l    Fishing Tracker,run_command,/tr fishing,&dClick to view your fishing stats!)
   chat
-  chat clickable(&6    Help,run_command,/tr help,&6Click to view help!)    clickable(&6Options,run_command,/tr options,&6Click to check options!)
+  chat clickable(&6    Help,run_command,/tr help,&6Click to view help!)    clickable(&6Options,run_command,/tr options,&6Click to check options!)            clickable(&6Check for updates,open_url,https://github.com/TCreopargh/skyblock-tracker/releases,&6Click to check for updates!)
   chat &e▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 }
 trigger other(wolf) {
@@ -238,7 +238,7 @@ trigger other(fishing2) {
 }
 trigger other(help) {
   chat &e▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-  chat &6&l Skyblock Tracker    &b&lHelp
+  chat &6&l Skyblock Tracker    &b&oHelp
   chat &7  Powered By TCreopargh
   chat
   chat  &6•&r This script is designed to help players track their slayer and fishing stats.
@@ -287,7 +287,7 @@ trigger other(options) {
     {string[easteregg1]}.set(&c&lOFF)
   end
   chat &e▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-  chat &6&l Skyblock Tracker    &c&lOptions Menu
+  chat &6&l Skyblock Tracker    &c&oOptions Menu
   chat &7  Powered By TCreopargh
   chat &b  Click on an option to toggle it.
   chat
@@ -297,7 +297,7 @@ trigger other(options) {
   chat &e  clickable(&6Fake slayer drop messages {string[fakedrop1]},run_command,/tr togglefakedrop,&eClick to toggle fake slayer drop messages!)
   chat &e  clickable(&fMore visible non messages {string[nonchat1]},run_command,/tr togglenonchat,&eClick to toggle more visible non messages!)
   chat &e  clickable(&6Ability cooldown notifications {string[cooldown1]},run_command,/tr togglecooldown,&eClick to toggle ability cooldown notifications!)
-  chat &e  clickable(&fEaster Egg {string[easteregg1]},run_command,/tr toggleeasteregg,&eClick to toggle Easter egg!)
+  chat &e  clickable(&fSuper secret stuff &7(What is this?!) {string[easteregg1]},run_command,/tr toggleeasteregg,&eClick to toggle Super secret stuff!)
   chat &e▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 }
 trigger other(togglesplash) {
@@ -357,10 +357,10 @@ trigger other(togglecooldown) {
 trigger other(toggleeasteregg) {
   if {string[easteregg]}.==(0)
     {string[easteregg]}.save(1)
-    chat &b&lEaster Egg &r&efeature is set to &a&lON!
+    chat &b&lSuper secret stuff &r&efeature is set to &a&lON!
   else
     {string[easteregg]}.save(0)
-    chat &b&lEaster Egg &r&efeature is set to &c&lOFF!
+    chat &b&lSuper secret stuff &r&efeature is set to &c&lOFF!
   end
 }
 trigger onchat(20) {
@@ -464,7 +464,7 @@ trigger onchat(12) {
     end
   end
 }
-trigger chat({string[name]}: {string[msg]}) {
+trigger chat(&r&7{string[name]}&r&7: {string[msg]}) {
   if not {string[nonchat]}.==(0)
     if {string[name]}.matchesRegex([a-zA-Z0-9_]+)
       cancel
