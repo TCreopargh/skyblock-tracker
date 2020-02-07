@@ -4,6 +4,8 @@
 
 ## Install instructions
 
+You can download an easy-to-install zip pack from here: https://github.com/TCreopargh/skyblock-tracker/releases
+
  * Requires forge
 
  * Download and install Chattriggers mod from here: (ver 5.2): <https://github.com/ChatTriggers/ChatTriggers/releases>
