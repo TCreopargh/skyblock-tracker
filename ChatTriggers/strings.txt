@@ -112,3 +112,5 @@ string:defender
   value:0
 string:outbid
   value:1
+string:ability
+  value:2

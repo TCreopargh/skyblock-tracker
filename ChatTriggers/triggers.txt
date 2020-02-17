@@ -3,7 +3,7 @@
 trigger chat(/d) {
   cancel
   chat &e▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-  chat &6&l Skyblock Tracker  &r&7v1.2.1
+  chat &6&l SkyBlock Tracker  &r&7v1.3
   chat &7  Powered By TCreopargh
   chat
   chat &b  Select an item:
@@ -214,7 +214,7 @@ trigger other(fishing) {
   chat &9  Sea Witch: &6{string[seawitch]}
   chat &a  Sea Archer: &6{string[seaarcher]}
   chat
-  chat clickable(&e   > Click to show next page!,run_command,/tr fishing2,&eClick to show next page!)
+  chat clickable(&e   > Click to show the next page!,run_command,/tr fishing2,&eClick to show next page!)
   chat &d▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 }
 trigger other(fishing2) {
@@ -233,19 +233,19 @@ trigger other(fishing2) {
   chat &6  Good Catch: &b{string[goodcatch]}
   chat &5  Great Catch: &b{string[greatcatch]}
   chat
-  chat clickable(&e   < Click to show previous page!,run_command,/tr fishing,&eClick to show previous page!)
+  chat clickable(&e   < Click to show the previous page!,run_command,/tr fishing,&eClick to show previous page!)
   chat &d▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 }
 trigger other(help) {
   chat &e▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-  chat &6&l Skyblock Tracker    &b&oHelp
+  chat &6&l SkyBlock Tracker    &b&oHelp
   chat &7  Powered By TCreopargh
   chat
   chat  &6•&r This script is designed to help players track their slayer and fishing stats.
   chat  &6•&r Type &d/d&r to open the main menu (Only works on Hypixel when not in Limbo). You can use &d/tr &b0~6&r to open main menu and submenus quickly. (Works everywhere)
   chat  &6•&r It is designed for T4 slayers only, doing other tier of slayers or random quests will cause slayer XP to be inaccurate.
   chat  &6•&r Also drops of other slayer tiers do not count into the stats.
-  chat  &6•&r You should change the base XP string in string.txt (in thousands) so it correctly shows your current slayer XP.
+  chat  &6•&r Type &d.setzombiexp &6<value>&f, &d.setspiderxp &6<value>&f and &d.setwolfxp &6<value>&f to set your slayer boss XP.
   chat  &6•&r If you find any bug within the script, please let me know!
   chat  &6•&r You may edit this script for personal use.
   chat &e▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
@@ -286,8 +286,15 @@ trigger other(options) {
   else
     {string[easteregg1]}.set(&c&lOFF)
   end
+  if {string[ability]}.==(1)
+    {string[ability1]}.set(&a&lCHAT)
+  elseif {string[ability]}.==(2)
+    {string[ability1]}.set(&b&lNOTIFY)
+  else
+    {string[ability1]}.set(&c&lDISABLED)
+  end
   chat &e▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-  chat &6&l Skyblock Tracker    &c&oOptions Menu
+  chat &6&l SkyBlock Tracker    &c&oOptions Menu
   chat &7  Powered By TCreopargh
   chat &b  Click on an option to toggle it.
   chat
@@ -297,8 +304,21 @@ trigger other(options) {
   chat &e  clickable(&6Fake slayer drop messages {string[fakedrop1]},run_command,/tr togglefakedrop,&eClick to toggle fake slayer drop messages!)
   chat &e  clickable(&fMore visible non messages {string[nonchat1]},run_command,/tr togglenonchat,&eClick to toggle more visible non messages!)
   chat &e  clickable(&6Ability cooldown notifications {string[cooldown1]},run_command,/tr togglecooldown,&eClick to toggle ability cooldown notifications!)
-  chat &e  clickable(&fSuper secret stuff &7(What is this?!) {string[easteregg1]},run_command,/tr toggleeasteregg,&eClick to toggle Super secret stuff!)
+  chat &e  clickable(&f"Used ability" messages {string[ability1]},run_command,/tr toggleability,&eClick to toggle "used ability" messages!)
+  chat &e  clickable(&6Super secret stuff &7(What is this?!) {string[easteregg1]},run_command,/tr toggleeasteregg,&eClick to toggle Super secret stuff!)
   chat &e▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+}
+trigger other (toggleability) {
+  if {string[ability]}.==(1)
+    {string[ability]}.save(2)
+    chat &b&l"Used ability" messages &r&efeature is set to &b&lNOTIFY!
+  elseif {string[ability]}.==(2)
+    {string[ability]}.save(0)
+    chat &b&l"Used ability" messages &r&efeature is set to &c&lDISABLED!
+  else
+    {string[ability]}.save(1)
+    chat &b&l"Used ability" messages &r&efeature is set to &a&lCHAT!
+  end
 }
 trigger other(togglesplash) {
   if {string[splash]}.==(0)
@@ -420,47 +440,81 @@ trigger chat(Used Howl! ({string[amount]} Mana)) {
   end
 }
 trigger onchat(10) {
+  {string[likelihood]}.set(0)
   if not {string[splash]}.==(0)
-    if {msg}.remForm().replaceIgnoreCase(hub,splash).replace(?, ).replace(!, ).replace(-, ).replaceIgnoreCase(sploosh,splash).replaceIgnoreCase(spritz,splash).replaceIgnoreCase(splashed,splash).replaceIgnoreCase(splashing,splash).suffix( ).containsIgnoreCase( splash )
-      if not {msg}.toLower().contains(hub29splash)
-        if not {msg}.toLower().contains(to the hub island)
-          if not {msg}.toLower().contains(join for hub)
-            if not {msg}.toLower().contains(skyblock hub)
-              if not {msg}.toLower().contains(hub29splash)
-                if not {msg}.toLower().contains(splashed by)
-                  cancel
-                  chat {msg}.replace(splash,&c&osplash&r).replace(hub,&c&ohub&r).replace(Splash,&c&oSplash&r).replace(SPLASH,&c&oSPLASH&r).replace(Hub,&c&oHub&r).replace(HUB,&c&oHUB&r)
-                  wait 5
-                    chat &c&lATTENTION: &eThere &emight &ebe &ea &dsplash&e!
-                    sound <pitch=2>mob.enderdragon.growl
-                  end
-                end
-              end
-            end
+    if {msg}.remForm().contains(:)
+      {string[msgspace]}.set({msg}.suffix( ))
+      if {string[msgspace]}.toLower().matchesRegex(.*:.*(splash|spritz|sploosh|spalsh|喷药).*)
+        {string[likelihood]}.set({string[likelihood]}.+(2))
+      end
+      if {string[msgspace]}.toLower().matchesRegex(.*:.*hub.*)
+        {string[likelihood]}.set({string[likelihood]}.+(2))
+      end
+      if {string[msgspace]}.toLower().matchesRegex(.*:.*[0-9]+.*)
+        {string[likelihood]}.set({string[likelihood]}.+(1))
+      end
+      if {string[msgspace]}.toLower().matchesRegex(.*:.*(hub|lobby|大厅)( )*[0-9]+.*)
+        {string[likelihood]}.set({string[likelihood]}.+(3))
+      end
+      if {string[msgspace]}.toLower().matchesRegex(.*:.*[0-9]+( )*(hub|lobby|大厅).*)
+        {string[likelihood]}.set({string[likelihood]}.+(3))
+      end
+      if {string[msgspace]}.toLower().matchesRegex(.*:.*(disc|my hub|my lobby|join party|g party)+.*)
+        {string[likelihood]}.set({string[likelihood]}.+(2))
+      end
+      if {msg}.matchesRegex(.*:.*[0-9]+ *+(sven|lake|pond|waterfall|map|gh|ghouse|g house|barn|farm|mountain|end|colosseum)+.*)
+        if not {msg}.containsIgnoreCase(svens)
+          {string[likelihood]}.set({string[likelihood]}.+(3))
+        end
+      end
+      if {msg}.matchesRegex(.*(sven|lake|pond|waterfall|map| gh|ghouse|g house|barn|farm|mountain| end|colosseum)+.*)
+        if not {msg}.containsIgnoreCase(svens)
+          {string[likelihood]}.set({string[likelihood]}.+(1))
+        end
+      end
+      if {msg}.contains(http)
+        {string[likelihood]}.set(0)
+      end
+      if {string[likelihood]}.>=(3)
+        if {string[likelihood]}.>=(5)
+          wait 5
+            notify <time=600>&b>&c>&a> &c&lSPLASH! &eThere &ewill &bvery &blikely &ebe &ea &dsplash&e! &r&a<&c<&b<
+            chat &b>&c>&a> &c&lSPLASH! &eThere &ewill &bvery &blikely &ebe &ea &dsplash&e! &r&a<&c<&b<
+            sound random.splash
+          end
+        else
+          wait 5
+            notify <time=300>&c&lSPLASH! &eThere &emight &ebe &ea &dsplash&e!
+            chat &c&lSPLASH! &eThere &emight &ebe &ea &dsplash&e!
+            sound <pitch=2><vol=40>random.splash
           end
         end
       end
     end
+  end
 }
 trigger onchat(11) {
   if not {string[outbid]}.==(0)
-    if {msg}.toLower().contains(outbid you by)
-      wait 10
-        chat &c&lATTENTION: &eSomeone &ehas &eoutbid &eyou!
-        sound <pitch=2>mob.enderdragon.growl
+    if not {msg}.contains(:)
+      if {msg}.toLower().contains(outbid you by)
+        wait 10
+          chat &c&lATTENTION: &eSomeone &ehas &eoutbid &eyou!
+          notify <time=300>&c&lATTENTION: &eSomeone &ehas &eoutbid &eyou!
+          sound <pitch=2>random.anvil_use
+        end
       end
     end
   end
 }
 trigger onchat(12) {
   if not {string[easteregg]}.==(0)
-    if {msg}.contains(TCreopargh)
-      if not {msg}.toLower().contains(splash)
-        if not {msg}.toLower().contains(hub)
-          cancel
-          chat {msg}.replace(&6[MVP&r&2++&r&6] TCreopargh,&c[OWNER] &cTCreopargh&r).replace(&6[MVP&2++&6] TCreopargh,&c[OWNER] &cTCreopargh&r)
-        end
-      end
+    if {msg}.remForm().contains([MVP++] TCreopargh)
+      cancel
+      chat {msg}.replace(&6[MVP&r&2++&r&6] TCreopargh,&b[&cR&6A&eI&aN&bB&9O&dW&b] &cT&6C&er&ae&bo&9p&da&cr&6g&eh&r).replace(&6[MVP&2++&6] TCreopargh,&b[&cR&6A&eI&aN&bB&9O&dW&b] &cT&6C&er&ae&bo&9p&da&cr&6g&eh&r)
+    end
+    if {msg}.remForm().contains([MVP+] TCreopargh)
+      cancel
+      chat {msg}.replace(&6[MVP&r&2+&r&6] TCreopargh,&b[&cR&6A&eI&aN&bB&9O&dW&b] &cT&6C&er&ae&bo&9p&da&cr&6g&eh&r).replace(&6[MVP&2+&6] TCreopargh,&b[&cR&6A&eI&aN&bB&9O&dW&b] &cT&6C&er&ae&bo&9p&da&cr&6g&eh&r)
     end
   end
 }
@@ -487,10 +541,8 @@ trigger onchat(0) {
     if {string[s]}.remForm().containsIgnoreCase(Sven)
       if {string[s]}.remForm().contains(IV)
         if {msg}.remForm().replaceIgnoreCase(狼,Wolf).containsIgnoreCase(Talk to Maddox to claim your Wolf Slayer XP!)
-          cancel
           {string[wolf]}.save({string[wolf]}.+(1))
-          chat {msg}
-          chat &bLoot saved. type &d/d &bor&d /tr 0&b to open tracker menu!
+          notify <time=180>&d&lBOSS SLAIN! &bBoss Type:  &3&lWolf
         end
       end
     end
@@ -501,20 +553,27 @@ trigger onchat(0) {
         if {msg}.remForm().containsIgnoreCase(Rare Drop)
           if {msg}.remForm().containsIgnoreCase(Overflux Capacitor)
             {string[overflux]}.save({string[overflux]}.+(1))
+            notify <time=500>&d&lCRAZY RARE! &r&5Overflux Capacitor &7acquired
           elseif {msg}.remForm().containsIgnoreCase(Grizzly Bait)
             {string[grizzly]}.save({string[grizzly]}.+(1))
+            notify <time=500>&d&lCRAZY RARE! &r&9Grizzly Bait &7acquired
           elseif {msg}.remForm().containsIgnoreCase(Red Claw Egg)
             {string[redclaw]}.save({string[redclaw]}.+(1))
+            notify <time=500>&d&lCRAZY RARE! &r&5Red Claw Egg &7acquired
           elseif {msg}.remForm().containsIgnoreCase(Couture Rune)
             {string[couture]}.save({string[couture]}.+(1))
+            notify <time=500>&d&lCRAZY RARE! &r&6Couture Rune &7acquired
           elseif {msg}.remForm().containsIgnoreCase(Enchanted Book)
             if {msg}.remForm().containsIgnoreCase(VERY)
               {string[crit6]}.save({string[crit6]}.+(1))
+              notify <time=400>&5&lVERY RARE! &r&dCritical VI Book &7acquired
             end
           elseif {msg}.remForm().containsIgnoreCase(Spirit Rune)
             {string[spirit]}.save({string[spirit]}.+(1))
+            notify <time=300>&9&lVERY RARE! &r&bSpirit Rune &7acquired
           elseif {msg}.remForm().containsIgnoreCase(Hamster Wheel)
             {string[hamster]}.save({string[hamster]}.+(1))
+            notify <time=200>&b&lRARE! &r&9Hamster Wheel &7acquired
           end
         end
       end
@@ -527,10 +586,8 @@ trigger onchat(1) {
     if {string[1s]}.remForm().containsIgnoreCase(Taran)
       if {string[1s]}.remForm().contains(IV)
         if {msg}.remForm().replaceIgnoreCase(蜘蛛,Spider).containsIgnoreCase(Talk to Maddox to claim your Spider Slayer XP!)
-          cancel
           {string[spider]}.save({string[spider]}.+(1))
-          chat {msg}
-          chat &bLoot saved. type &d/d &bor&d /tr 0&b to open tracker menu!
+          notify <time=180>&d&lBOSS SLAIN! &bBoss Type:  &4&lSpider
         end
       end
     end
@@ -541,20 +598,27 @@ trigger onchat(1) {
         if {msg}.remForm().containsIgnoreCase(Rare Drop)
           if {msg}.remForm().containsIgnoreCase(Digested Mosquito)
             {string[digested]}.save({string[digested]}.+(1))
+            notify <time=500>&d&lCRAZY RARE! &r&6Digested Mosquito &7acquired
           elseif {msg}.remForm().containsIgnoreCase(Tarantula Talisman)
             {string[talisman]}.save({string[talisman]}.+(1))
+            notify <time=500>&d&lCRAZY RARE! &r&5Tarantula Talisman &7acquired
           elseif {msg}.remForm().containsIgnoreCase(Fly Swatter)
             {string[swatter]}.save({string[swatter]}.+(1))
+            notify <time=500>&d&lCRAZY RARE! &r&5Fly Swatter &7acquired
           elseif {msg}.remForm().containsIgnoreCase(Enchanted Book)
             if {msg}.remForm().containsIgnoreCase(VERY)
               {string[bane6]}.save({string[bane6]}.+(1))
+              notify <time=400>&5&lVERY RARE! &r&dBane VI Book &7acquired
             end
           elseif {msg}.remForm().containsIgnoreCase(Spider Catalyst)
             {string[spidercata]}.save({string[spidercata]}.+(1))
+            notify <time=400>&5&lVERY RARE! &r&9Spider Catalyst &7acquired
           elseif {msg}.remForm().containsIgnoreCase(Bite Rune)
             {string[bite]}.save({string[bite]}.+(1))
+            notify <time=300>&9&lVERY RARE! &r&aBait Rune &7acquired
           elseif {msg}.remForm().containsIgnoreCase(Toxic Arrow Poison)
             {string[toxic]}.save({string[toxic]}.+(1))
+            notify <time=200>&b&lRARE! &r&aToxic Arrow Poison &7acquired
           end
         end
       end
@@ -567,10 +631,8 @@ trigger onchat(2) {
     if {string[2s]}.remForm().containsIgnoreCase(Reve)
       if {string[2s]}.remForm().contains(IV)
         if {msg}.remForm().replaceIgnoreCase(僵尸,Zombie).containsIgnoreCase(Talk to Maddox to claim your Zombie Slayer XP!)
-          cancel
           {string[zombie]}.save({string[zombie]}.+(1))
-          chat {msg}
-          chat &bLoot saved. type &d/d &bor&d /tr 0&b to open tracker menu!
+          notify <time=180>&d&lBOSS SLAIN! &bBoss Type:  &2&lZombie
         end
       end
     end
@@ -581,32 +643,35 @@ trigger onchat(2) {
         if {msg}.remForm().containsIgnoreCase(Rare Drop)
           if {msg}.remForm().containsIgnoreCase(Scythe Blade)
             {string[scythe]}.save({string[scythe]}.+(1))
+            notify <time=500>&d&lCRAZY RARE! &r&6Scythe Blade &7acquired
           elseif {msg}.remForm().containsIgnoreCase(Beheaded Horror)
             {string[beheaded]}.save({string[beheaded]}.+(1))
+            notify <time=500>&d&lCRAZY RARE! &r&5Beheaded Horror &7acquired
           elseif {msg}.remForm().containsIgnoreCase(Snake Rune)
             {string[snake]}.save({string[snake]}.+(1))
+            notify <time=500>&d&lCRAZY RARE! &r&aSnake Rune &7acquired
           elseif {msg}.remForm().containsIgnoreCase(Revenant Catalyst)
             {string[revcata]}.save({string[revcata]}.+(1))
+            notify <time=400>&5&lVERY RARE! &r&5Revenant Catalyst &7acquired
           elseif {msg}.remForm().containsIgnoreCase(Enchanted Book)
             if {msg}.remForm().containsIgnoreCase(VERY)
               {string[smite6]}.save({string[smite6]}.+(1))
+              notify <time=400>&5&lVERY RARE! &r&dSmite VI Book &7acquired
             end
           elseif {msg}.remForm().containsIgnoreCase(Undead Catalyst)
             {string[undeadcata]}.save({string[undeadcata]}.+(1))
+            notify <time=400>&5&lVERY RARE! &r&9Undead Catalyst &7acquired
           elseif {msg}.remForm().containsIgnoreCase(Pestilence Rune)
             {string[pest]}.save({string[pest]}.+(1))
+            notify <time=300>&9&lVERY RARE! &r&2Pestilence Rune &7acquired
           elseif {msg}.remForm().containsIgnoreCase(Foul Flesh)
             {string[foul]}.save({string[foul]}.+(1))
+            notify <time=200>&b&lRARE! &r&9Foul Flesh &7acquired
           end
         end
       end
     end
   end
-}
-trigger chat(co) {
-  cancel
-  chat &5+&d35 &5Runecrafting XP &7- &5Fusing &6Couture Rune II &7(&6&lLEGENDARY&r&7)
-  chat &cYou didn't succeed fusing your runes together!
 }
 trigger onchat(3) {
   if not {msg}.remForm().contains(:)
@@ -672,5 +737,83 @@ trigger onClientTick(2) {
           end
         end
       end
+    end
+  end
+}
+trigger onWorldFirstLoad(1) {
+  wait 30
+    chat &d{br}
+    chat &6&lSkyBlock Tracker &r&bis currently active!
+    chat &btype &d/d &bor &d/tr 0 &bto open tracker menu!
+    chat &d{br}
+  end
+}
+trigger chat(Used {string[ability_name]}! ({string[mana]} Mana)) {
+  if {string[ability]}.==(0)
+    cancel
+  elseif {string[ability]}.==(2)
+    cancel
+    notify <time=100>&6{string[ability_name]}! &b-{string[mana]} Mana
+  end
+}
+trigger chat({string[name]}: .setwolfxp {string[xp]}) {
+  if {string[name]}.contains({me})
+    if not {string[name]}.contains(:)
+      if {string[xp]}.matchesRegex((-?\d+)(\.\d+)?)
+        {string[xp]}.set({string[xp]}./(1000))
+        {string[xp1]}.set({string[xp]})
+        if {string[xp]}.>=(1000)
+          {string[xp1]}.set({string[xp]}./(1000))
+          {string[xp1]}.set({string[xp1]}.suffix(M))
+        else
+          {string[xp1]}.set({string[xp1]}.suffix(k))
+        end
+        {string[wolfbasexp]}.save({string[xp]}.-({string[wolf]}.*(0.5)))
+        chat &bYour &3&lWolf Slayer XP &r&bis set to &d{string[xp1]}&b!
+      else
+        chat &cPlease input a valid number!
+      end
+    end
+  end
+}
+trigger chat({string[name]}: .setspiderxp {string[xp]}) {
+  if {string[name]}.contains({me})
+    if not {string[name]}.contains(:)
+      if {string[xp]}.matchesRegex((-?\d+)(\.\d+)?)
+        {string[xp]}.set({string[xp]}./(1000))
+        {string[xp1]}.set({string[xp]})
+        if {string[xp]}.>=(1000)
+          {string[xp1]}.set({string[xp]}./(1000))
+          {string[xp1]}.set({string[xp1]}.suffix(M))
+        else
+          {string[xp1]}.set({string[xp1]}.suffix(k))
+        end
+        {string[spiderbasexp]}.save({string[xp]}.-({string[spider]}.*(0.5)))
+        chat &bYour &4&lSpider Slayer XP &r&bis set to &d{string[xp1]}&b!
+      else
+        chat &cPlease input a valid number!
+      end
+    end
+  end
+}
+trigger chat({string[name]}: .setzombiexp {string[xp]}) {
+  if {string[name]}.contains({me})
+    if not {string[name]}.contains(:)
+      if {string[xp]}.matchesRegex((-?\d+)(\.\d+)?)
+        {string[xp]}.set({string[xp]}./(1000))
+        {string[xp1]}.set({string[xp]})
+        if {string[xp]}.>=(1000)
+          {string[xp1]}.set({string[xp]}./(1000))
+          {string[xp1]}.set({string[xp1]}.suffix(M))
+        else
+          {string[xp1]}.set({string[xp1]}.suffix(k))
+        end
+        {string[zombiebasexp]}.save({string[xp]}.-({string[zombie]}.*(0.5)))
+        chat &bYour &2&lZombie Slayer XP &r&bis set to &d{string[xp1]}&b!
+      else
+        chat &cPlease input a valid number!
+      end
+    end
+  end
 }
 
