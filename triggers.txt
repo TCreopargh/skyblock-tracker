@@ -472,6 +472,9 @@ trigger onchat(10) {
           {string[likelihood]}.set({string[likelihood]}.+(1))
         end
       end
+      if {msg}.contains(http)
+        {string[likelihood]}.set(0)
+      end
       if {string[likelihood]}.>=(3)
         if {string[likelihood]}.>=(5)
           wait 5
