@@ -14,7 +14,7 @@ You can download an easy-to-install zip pack from here: https://github.com/TCreo
    - For some reason my Minecraft crashes with the newer versions of chattriggers so I have to use the old version.
 I could include the jar file in this zip but I decided to just give the link for account safety concerns.
 
- * Before starting, open strings.txt and you will see zombiebasexp, spiderbasexp and wolfbasexp, change the number below them to your current zombie/spider/wolf xp in kilos (for example if you have 123,450 xp, change it to 123.45)
+ * Follow the instructions in help menu to set your slayer XP.
 
  * Then just copy the entire ChatTriggers folder to your mod folder
 
