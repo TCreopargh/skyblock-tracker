@@ -3,7 +3,7 @@
 trigger chat(/d) {
   cancel
   chat &e▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-  chat &6&l SkyBlock Tracker  &r&7v1.3
+  chat &6&l SkyBlock Tracker  &r&7v1.3.1
   chat &7  Powered By TCreopargh
   chat
   chat &b  Select an item:
@@ -49,12 +49,12 @@ trigger other(wolf) {
     {string[cost1]}.set({string[cost1]}.suffix(k))
   end
   chat &e Coins Spent: &a{string[cost1]}
-  {string[v1]}.set({string[wolf]}.*(40))
+  {string[v1]}.set({string[wolf]}.*(35))
   {string[v2]}.set({string[overflux]}.*(70000))
-  {string[v3]}.set({string[grizzly]}.*(2500))
-  {string[v4]}.set({string[redclaw]}.*(1500))
-  {string[v5]}.set({string[couture]}.*(500))
-  {string[v6]}.set({string[crit6]}.*(400))
+  {string[v3]}.set({string[grizzly]}.*(2000))
+  {string[v4]}.set({string[redclaw]}.*(1200))
+  {string[v5]}.set({string[couture]}.*(400))
+  {string[v6]}.set({string[crit6]}.*(350))
   {string[v7]}.set({string[spirit]}.*(25))
   {string[v8]}.set({string[hamster]}.*(80))
   {string[lootval]}.set({string[v1]}.+({string[v2]}.+({string[v3]}.+({string[v4]}.+({string[v5]})))))
@@ -108,12 +108,12 @@ trigger other(spider) {
     {string[1cost1]}.set({string[1cost1]}.suffix(k))
   end
   chat &e Coins Spent: &a{string[1cost1]}
-  {string[1v1]}.set({string[spider]}.*(30))
+  {string[1v1]}.set({string[spider]}.*(25))
   {string[1v2]}.set({string[digested]}.*(30000))
   {string[1v3]}.set({string[talisman]}.*(8000))
-  {string[1v4]}.set({string[swatter]}.*(200))
+  {string[1v4]}.set({string[swatter]}.*(500))
   {string[1v5]}.set({string[bane6]}.*(50))
-  {string[1v6]}.set({string[spidercata]}.*(300))
+  {string[1v6]}.set({string[spidercata]}.*(250))
   {string[1v7]}.set({string[bite]}.*(10))
   {string[1v8]}.set({string[toxic]}.*(12.8))
   {string[1lootval]}.set({string[1v1]}.+({string[1v2]}.+({string[1v3]}.+({string[1v4]}.+({string[1v5]})))))
@@ -168,10 +168,10 @@ trigger other(zombie) {
     {string[2cost1]}.set({string[2cost1]}.suffix(k))
   end
   chat &e Coins Spent: &a{string[2cost1]}
-  {string[2v1]}.set({string[zombie]}.*(20))
+  {string[2v1]}.set({string[zombie]}.*(15))
   {string[2v2]}.set({string[scythe]}.*(35000))
   {string[2v3]}.set({string[beheaded]}.*(400))
-  {string[2v4]}.set({string[snake]}.*(500))
+  {string[2v4]}.set({string[snake]}.*(400))
   {string[2v5]}.set({string[revcata]}.*(100))
   {string[2v6]}.set({string[smite6]}.*(50))
   {string[2v7]}.set({string[undeadcata]}.*(10))
@@ -390,7 +390,7 @@ trigger onchat(20) {
         if {string[s]}.remForm().contains(IV)
           if {msg}.remForm().replaceIgnoreCase(狼,Wolf).containsIgnoreCase(Talk to Maddox to claim your Wolf Slayer XP!)
             wait 20
-              chat §d§lCRAZY §d§lRARE §d§lDROP!  §k§7(§5Overflux §5Capacitor§7) §b(+85% §bMagic §bFind!)
+              chat &d&lCRAZY &d&lRARE &d&lDROP!  &k&7(&5Overflux &5Capacitor&7) &b(+85% &bMagic &bFind!)
               sound <pitch=2>random.levelup
             end
           end
@@ -406,7 +406,7 @@ trigger onchat(21) {
         if {string[s]}.remForm().contains(IV)
           if {msg}.remForm().replaceIgnoreCase(僵尸,Zombie).containsIgnoreCase(Talk to Maddox to claim your Zombie Slayer XP!)
             wait 20
-              chat §d§lCRAZY §d§lRARE §d§lDROP!  §k§7(§6Scythe §6Blade§7) §b(+89% §bMagic §bFind!)
+              chat &d&lCRAZY &d&lRARE &d&lDROP!  &k&7(&6Scythe &6Blade&7) &b(+89% &bMagic &bFind!)
               sound <pitch=2>random.levelup
             end
           end
@@ -422,7 +422,7 @@ trigger onchat(22) {
         if {string[s]}.remForm().contains(IV)
           if {msg}.remForm().replaceIgnoreCase(蜘蛛,Spider).containsIgnoreCase(Talk to Maddox to claim your Spider Slayer XP!)
             wait 20
-              chat §d§lCRAZY §d§lRARE §d§lDROP!  §k§7(§6Digested §6Mosquito§7) §b(+85% §bMagic §bFind!)
+              chat &d&lCRAZY &d&lRARE &d&lDROP!  &k&7(&6Digested &6Mosquito&7) &b(+85% &bMagic &bFind!)
               sound <pitch=2>random.levelup
             end
           end
@@ -462,12 +462,12 @@ trigger onchat(10) {
       if {string[msgspace]}.toLower().matchesRegex(.*:.*(disc|my hub|my lobby|join party|g party)+.*)
         {string[likelihood]}.set({string[likelihood]}.+(2))
       end
-      if {msg}.matchesRegex(.*:.*[0-9]+ *+(sven|lake|pond|waterfall|map|gh|ghouse|g house|barn|farm|mountain|end|colosseum)+.*)
+      if {msg}.matchesRegex(.*:.*[0-9]+ *+(sven|fairy|lake|pond|waterfall|map|gh|ghouse|g house|barn|farm|mountain|colosseum)+.*)
         if not {msg}.containsIgnoreCase(svens)
           {string[likelihood]}.set({string[likelihood]}.+(3))
         end
       end
-      if {msg}.matchesRegex(.*(sven|lake|pond|waterfall|map| gh|ghouse|g house|barn|farm|mountain| end|colosseum)+.*)
+      if {msg}.matchesRegex(.*(sven|fairy|lake|pond|waterfall|map| gh|ghouse|g house|barn|farm|mountain|colosseum)+.*)
         if not {msg}.containsIgnoreCase(svens)
           {string[likelihood]}.set({string[likelihood]}.+(1))
         end
@@ -542,7 +542,7 @@ trigger onchat(0) {
       if {string[s]}.remForm().contains(IV)
         if {msg}.remForm().replaceIgnoreCase(狼,Wolf).containsIgnoreCase(Talk to Maddox to claim your Wolf Slayer XP!)
           {string[wolf]}.save({string[wolf]}.+(1))
-          notify <time=180>&d&lBOSS SLAIN! &bBoss Type:  &3&lWolf
+          notify <time=180>&c&lBOSS SLAIN! &bBoss Type:  &3&lWolf
         end
       end
     end
@@ -553,7 +553,7 @@ trigger onchat(0) {
         if {msg}.remForm().containsIgnoreCase(Rare Drop)
           if {msg}.remForm().containsIgnoreCase(Overflux Capacitor)
             {string[overflux]}.save({string[overflux]}.+(1))
-            notify <time=500>&d&lCRAZY RARE! &r&5Overflux Capacitor &7acquired
+            notify <time=1000> &d&ko&r &c&lR&6&lN&e&lG&a&lE&b&lS&9&lU&d&lS&f&l! &d&ko&r &r&5Overflux Capacitor &bobtained!
           elseif {msg}.remForm().containsIgnoreCase(Grizzly Bait)
             {string[grizzly]}.save({string[grizzly]}.+(1))
             notify <time=500>&d&lCRAZY RARE! &r&9Grizzly Bait &7acquired
@@ -587,7 +587,7 @@ trigger onchat(1) {
       if {string[1s]}.remForm().contains(IV)
         if {msg}.remForm().replaceIgnoreCase(蜘蛛,Spider).containsIgnoreCase(Talk to Maddox to claim your Spider Slayer XP!)
           {string[spider]}.save({string[spider]}.+(1))
-          notify <time=180>&d&lBOSS SLAIN! &bBoss Type:  &4&lSpider
+          notify <time=180>&c&lBOSS SLAIN! &bBoss Type:  &4&lSpider
         end
       end
     end
@@ -598,7 +598,7 @@ trigger onchat(1) {
         if {msg}.remForm().containsIgnoreCase(Rare Drop)
           if {msg}.remForm().containsIgnoreCase(Digested Mosquito)
             {string[digested]}.save({string[digested]}.+(1))
-            notify <time=500>&d&lCRAZY RARE! &r&6Digested Mosquito &7acquired
+            notify <time=1000> &d&ko&r &c&lR&6&lN&e&lG&a&lE&b&lS&9&lU&d&lS&f&l! &d&ko&r &r&6Digested Mosquito &bobtained!
           elseif {msg}.remForm().containsIgnoreCase(Tarantula Talisman)
             {string[talisman]}.save({string[talisman]}.+(1))
             notify <time=500>&d&lCRAZY RARE! &r&5Tarantula Talisman &7acquired
@@ -632,7 +632,7 @@ trigger onchat(2) {
       if {string[2s]}.remForm().contains(IV)
         if {msg}.remForm().replaceIgnoreCase(僵尸,Zombie).containsIgnoreCase(Talk to Maddox to claim your Zombie Slayer XP!)
           {string[zombie]}.save({string[zombie]}.+(1))
-          notify <time=180>&d&lBOSS SLAIN! &bBoss Type:  &2&lZombie
+          notify <time=180>&c&lBOSS SLAIN! &bBoss Type:  &2&lZombie
         end
       end
     end
@@ -643,7 +643,7 @@ trigger onchat(2) {
         if {msg}.remForm().containsIgnoreCase(Rare Drop)
           if {msg}.remForm().containsIgnoreCase(Scythe Blade)
             {string[scythe]}.save({string[scythe]}.+(1))
-            notify <time=500>&d&lCRAZY RARE! &r&6Scythe Blade &7acquired
+            notify <time=1000> &d&ko&r &c&lR&6&lN&e&lG&a&lE&b&lS&9&lU&d&lS&f&l! &d&ko&r &r&6Scythe Blade &bobtained!
           elseif {msg}.remForm().containsIgnoreCase(Beheaded Horror)
             {string[beheaded]}.save({string[beheaded]}.+(1))
             notify <time=500>&d&lCRAZY RARE! &r&5Beheaded Horror &7acquired
@@ -677,44 +677,64 @@ trigger onchat(3) {
   if not {msg}.remForm().contains(:)
     if {msg}.remForm().containsIgnoreCase(You caught a lowly)
       {string[squid]}.save({string[squid]}.+(1))
+      notify <time=200>&7&lSquid &r&6#&e{string[squid]} &r&6fished!
     elseif {msg}.remForm().containsIgnoreCase(Pitch darkness reveals you've caught a)
       {string[nightsquid]}.save({string[nightsquid]}.+(1))
+      notify <time=200>&8&lNight Squid &r&6#&e{string[nightsquid]} &r&6fished!
     elseif {msg}.remForm().containsIgnoreCase(From the depths of the waters, you've reeled in a Sea Walker)
       {string[seawalker]}.save({string[seawalker]}.+(1))
+      notify <time=200>&a&lSea Walker &r&6#&e{string[seawalker]} &r&6fished!
     elseif {msg}.remForm().containsIgnoreCase(From the depths of the waters, you've reeled in a Sea Archer)
       {string[seaarcher]}.save({string[seaarcher]}.+(1))
+      notify <time=200>&a&lSea Archer &r&6#&e{string[seaarcher]} &r&6fished!
     elseif {msg}.remForm().containsIgnoreCase(You've stumbled upon a patrolling Sea Guardian)
       {string[guardian]}.save({string[guardian]}.+(1))
+      notify <time=250>&3&lSea Guardian &r&6#&e{string[guardian]} &r&6fished!
     elseif {msg}.remForm().containsIgnoreCase(Frozen Steve fell into the pond long ago)
       {string[steve]}.save({string[steve]}.+(1))
+      notify <time=250>&b&lFrozen Steve &r&6#&e{string[steve]} &r&6fished!
     elseif {msg}.remForm().containsIgnoreCase(It's a snowman! He looks harmless)
       {string[frosty]}.save({string[frosty]}.+(1))
+      notify <time=250>&f&lFrosty &r&6#&e{string[frosty]} &r&6fished!
     elseif {msg}.remForm().containsIgnoreCase(The Monster of the Deep emerges from the dark depths)
       {string[deeprider]}.save({string[deeprider]}.+(1))
+      notify <time=300>&a&lMonster of the Deep &r&6#&e{string[deeprider]} &r&6fished!
     elseif {msg}.remForm().containsIgnoreCase(You have found a Catfish, don't let it steal your catches!)
       {string[catfish]}.save({string[catfish]}.+(1))
+      notify <time=300>&e&lCatfish &r&6#&e{string[catfish]} &r&6fished!
     elseif {msg}.remForm().containsIgnoreCase(stole Jerry's Gifts...get them back!)
       {string[grinch]}.save({string[grinch]}.+(1))
+      notify <time=500>&2&lGrinch &r&6#&e{string[grinch]} &r&6fished!
     elseif {msg}.remForm().containsIgnoreCase(Gross! A Sea Leech!)
       {string[sealeech]}.save({string[sealeech]}.+(1))
+      notify <time=300>&7&lSea Leech &r&6#&e{string[sealeech]} &r&6fished!
     elseif {msg}.remForm().containsIgnoreCase(You've discovered a Guardian Defender of the sea.)
       {string[defender]}.save({string[defender]}.+(1))
+      notify <time=400>&5&lGuardian Defender &r&6#&e{string[defender]} &r&bfished!
     elseif {msg}.remForm().containsIgnoreCase(You have awoken the Deep Sea Protector, prepare for a battle!)
       {string[mengdong]}.save({string[mengdong]}.+(1))
+      notify <time=400>&5&lDeep Sea Protector &r&6#&e{string[mengdong]} &r&bfished!
     elseif {msg}.remForm().containsIgnoreCase(The Water Hydra has come to test your strength)
       {string[hydra]}.save({string[hydra]}.+(1))
+      notify <time=600> &b&ko&r &6&lWater Hydra &r&b&ko&r &r&d#&b{string[hydra]} &r&dfished!
     elseif {msg}.remForm().containsIgnoreCase(The Sea Emperor arises from the depths)
       {string[emperor]}.save({string[emperor]}.+(1))
+      notify <time=600> &b&ko&r &6&lThe Sea Emperor &r&b&ko&r &r&d#&b{string[emperor]} &r&dfished!
     elseif {msg}.remForm().containsIgnoreCase(What is this creature)
       {string[yeti]}.save({string[yeti]}.+(1))
+      notify <time=600> &b&ko&r &6&lYeti &r&b&ko&r &r&d#&b{string[yeti]} &r&dfished!
     elseif {msg}.remForm().containsIgnoreCase(Good Catch!)
       {string[goodcatch]}.save({string[goodcatch]}.+(1))
+      notify <time=250>&bYou got &6&lGood Catch&r&b &r&5#&d{string[goodcatch]}&b!
     elseif {msg}.remForm().containsIgnoreCase(Great Catch!)
       {string[greatcatch]}.save({string[greatcatch]}.+(1))
+      notify <time=450>&bYou got &5&lGreat Catch&r&b &r&5#&d{string[greatcatch]}&b!
     elseif {msg}.remForm().containsIgnoreCase(It looks like you've disrupted Sea Witch's brewing session.)
       {string[seawitch]}.save({string[seawitch]}.+(1))
+      notify <time=350>&9&lSea Witch &r&6#&e{string[seawitch]} &r&6fished!
     elseif {msg}.remForm().containsIgnoreCase(Is this even a fish? It's the Carrot King!)
       {string[carrotking]}.save({string[carrotking]}.+(1))
+      notify <time=350>&6&lCarrot King &r&6#&e{string[carrotking]} &r&6fished!
     end
   end
 }
